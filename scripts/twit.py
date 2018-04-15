@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import tweepy
 import json
 import re
