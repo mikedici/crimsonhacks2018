@@ -1,0 +1,108 @@
+
+html, body
+{
+    background-color: #ffffff ;
+    margin:0;
+}
+
+.header {
+    background-color:#4A6981;
+    padding: 30px 10px;
+}
+
+img {
+    
+    padding-left: 30px;
+    padding-top: 10px;
+}
+.dropdown{
+    
+    position: absolute;
+    padding-top: 60px;
+    padding-left: 40px;
+    background-color: aquamarine;
+
+
+}
+
+.myImage{
+    max-width: 100px;
+}
+
+.crypto{
+    padding-left: 100px;
+    width: 50%;
+}
+
+.edit{
+    height: 400px;
+    padding-left: 50px;
+}
+
+.barchart{
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top:60px;
+
+
+}
+
+
+
+
+
+
+
+
+
+.wrapper{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+}
+
+.search-box{
+    width:450px;
+    height:100px;
+    position: relative;
+}
+
+.input{
+    position: absolute;
+    top: 20px;
+    right:50px;
+    box-sizing: border-box;
+    width: 350px;
+    height: 63px;
+    border: 3px solid #023436;
+    border-radius: 50px;
+    padding: 0 20px;
+    outline:none;
+    font-size: 18px;
+    color: #29313a;
+    
+
+}
+ /*  For Chrome*/
+::-webkit-input-placeholder{
+    color:#023436;
+}
+
+.button{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+     background:#023436;
+    border-radius: 50%;
+    top:19px;
+    right:45px;
+    cursor: pointer;
+    text-align:center;
+    line-height: 70px;
+    font-size:30px;
+    color: #fff;
+
+    
+}
