@@ -1,7 +1,9 @@
 import tweepy
 import json
+import re
 import MySQLdb as Database
 from warnings import filterwarnings
+from textblob import TextBlob
 
 filterwarnings('ignore', category=Database.Warning)
 
@@ -75,7 +77,6 @@ def get_user_tweets(creds, username):
     api = tweepy.API(auth)
 
     # 200 tweets to be extracted
-    number_of_tweets = 200
     tweets = api.user_timeline(screen_name=username, count=200, tweet_mode='extended')
 
     # empty list
@@ -94,11 +95,25 @@ def create_insert(tweet_list):
     return outstring
 
 
+def clean_tweet(tweet):
+    return ' '.join(re.sub("(@[A-Za-z0-9]+)|([^0-9A-Za-z \t]) | (\w+:\ / \ / \S+)", " ", tweet).split())
+
+
+def get_tweet_sentiment(tweet):
+    analysis = TextBlob(clean_tweet(tweet))
+
+    if analysis.sentiment.polarity > 0:
+        return 'positive'
+    elif analysis.sentiment.polarity == 0:
+        return 'neutral'
+    else:
+        return 'negative'
+
+
 def main():
     myconnections = Daemon("db.json", True)
     print(myconnections.query("SELECT * FROM tweet"))
 
-    
     credentials = None
     with open("creds.json", "r") as f:
         credentials = json.load(f)
@@ -108,9 +123,10 @@ def main():
     for i in interesting:
         tweet_data = get_hashtag_tweets(credentials, i)
         for j in tweet_data:
-            values.append((i, "", "", "", j.full_text, j.created_at.strftime('%Y-%m-%d')))
+            values.append((j.id_str,i, "", "", get_tweet_sentiment(j.full_text), j.full_text, j.created_at.strftime('%Y-%m-%d-%H-%M-%S')))
 
-    myconnections.query("INSERT INTO tweet (hashtag, lat, longitude, sentiment, raw_text, tweet_date) values" + str(create_insert(values)))
+    myconnections.query("INSERT ignore INTO tweet (tweet_id, hashtag, lat, longitude, sentiment, raw_text, tweet_date) values" + str(
+        create_insert(values)))
     myconnections.commit()
 
 
