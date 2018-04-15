@@ -5,6 +5,7 @@ import re
 import MySQLdb as Database
 from warnings import filterwarnings
 from textblob import TextBlob
+from time import sleep
 
 filterwarnings('ignore', category=Database.Warning)
 
@@ -36,6 +37,9 @@ class Daemon:
             print("Commiting Changes")
         self._db_connection.commit()
         return "success"
+
+    def close(self):
+        self._db_connection.close()
 
     def query(self, sql):
         if self.verbose_output:
@@ -148,12 +152,23 @@ def main():
                 except AttributeError:
                     outlat = ""
                     outlong = ""
-            values.append((j.id_str,i, outlat, outlong, get_tweet_sentiment(j.full_text), j.full_text, j.created_at.strftime('%Y-%m-%d-%H-%M-%S')))
+            values.append((j.id_str, i, outlat, outlong, get_tweet_sentiment(j.full_text), j.full_text,
+                           j.created_at.strftime('%Y-%m-%d-%H-%M-%S')))
 
-    myconnections.query("INSERT ignore INTO tweet (tweet_id, hashtag, lat, longitude, sentiment, raw_text, tweet_date) values" + str(
-        create_insert(values)))
+    myconnections.query(
+        "INSERT ignore INTO tweet (tweet_id, hashtag, lat, longitude, sentiment, raw_text, tweet_date) values" + str(
+            create_insert(values)))
     myconnections.commit()
+    myconnections.close()
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+        try:
+            print("got this far")
+            main()
+            print("waiting")
+            sleep(15 * 60)
+        except tweepy.RateLimitError:
+            print("not so fast")
+            sleep(2 * 60)
