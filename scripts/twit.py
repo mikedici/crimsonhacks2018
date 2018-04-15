@@ -111,8 +111,7 @@ def get_tweet_sentiment(tweet):
 
 
 def main():
-    myconnections = Daemon("db.json", True)
-    print(myconnections.query("SELECT * FROM tweet"))
+    myconnections = Daemon("db.json")
 
     credentials = None
     with open("creds.json", "r") as f:
