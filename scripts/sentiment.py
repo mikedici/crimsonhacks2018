@@ -1,16 +1,16 @@
 import re
 import tweepy
-from tweepy
 from tweepy import OAuthHandler
 from textblob import TextBlob
+
 
 class TwitterClient(object):
 
     def __int__(self):
         consumer_key = ''
         consumer_secret = ''
-        access_token =''
-        access_token_secret =''
+        access_token = ''
+        access_token_secret = ''
 
         try:
             self.auth = OAuthHandler(consumer_key, consumer_secret)
@@ -32,11 +32,11 @@ class TwitterClient(object):
         else:
             return 'negative'
 
-    def get_tweets(self, query, count = 10):
+    def get_tweets(self, query, count=10):
         tweets = []
 
         try:
-            fetched_tweets = self.api.search(q = query, count = count)
+            fetched_tweets = self.api.search(q=query, count=count)
 
             for tweet in fetched_tweets:
                 parsed_tweet = {}
@@ -53,22 +53,24 @@ class TwitterClient(object):
         except tweepy.TweepError as e:
             print("Error : " + str(e))
 
-    def main():
-        api = Twitterclient()
-        tweets = api.get_tweets(query = 'Donald Trump', count = 200)
-        ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
-        print("Positive tweets percentage: {} %".format(100*len(ptweets)/len(tweets)))
-        ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
-        print("Negative tweets percentage: {} %".format(100*len(ntweets)/len(tweets)))
-        print("Neutral tweets percentage: {} % \ ".format(100*len(tweets - ntweets - ptweets)/len(tweets)))
 
-        print("\n\nPositive tweets:")
-        for tweet in pwteets[:10]:
+def main():
+    api = TwitterClient()
+    tweets = api.get_tweets(query='Donald Trump', count=200)
+    ptweets = [tweet for tweet in tweets if tweet['sentiment'] == 'positive']
+    print("Positive tweets percentage: {} %".format(100 * len(ptweets) / len(tweets)))
+    ntweets = [tweet for tweet in tweets if tweet['sentiment'] == 'negative']
+    print("Negative tweets percentage: {} %".format(100 * len(ntweets) / len(tweets)))
+    print("Neutral tweets percentage: {} % \ ".format(100 * len(tweets - ntweets - ptweets) / len(tweets)))
+
+    print("\n\nPositive tweets:")
+    for tweet in ptweets[:10]:
+        print(tweet['text'])
+
+        print("\n\nNegative tweets:")
+        for tweet in ntweets[:10]:
             print(tweet['text'])
 
-            print("\n\nNegative tweets:")
-            for tweet in ntweets[:10]:
-                print(tweet['text'])
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
