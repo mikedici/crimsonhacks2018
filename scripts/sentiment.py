@@ -2,19 +2,20 @@ import re
 import tweepy
 from tweepy import OAuthHandler
 from textblob import TextBlob
+import json
 
 
-class TwitterClient(object):
+class TwitterClient:
 
-    def __int__(self):
-        consumer_key = ''
-        consumer_secret = ''
-        access_token = ''
-        access_token_secret = ''
+    def __int__(self, creds):
+        self.consumer_key = creds["consumer_key"]
+        self.consumer_secret = creds["consumer_secret"]
+        self.access_token = creds["access_token"]
+        self.access_token_secret = creds["access_token_secret"]
 
         try:
-            self.auth = OAuthHandler(consumer_key, consumer_secret)
-            self.auth.set_access_token(access_token, access_token_secret)
+            self.auth = OAuthHandler(self.consumer_key, self.consumer_secret)
+            self.auth.set_access_token(self.access_token, self.access_token_secret)
             self.api = tweepy.API(self.auth)
         except:
             print("Error: Authentication Failed")
@@ -68,8 +69,8 @@ def main():
         print(tweet['text'])
 
         print("\n\nNegative tweets:")
-        for tweet in ntweets[:10]:
-            print(tweet['text'])
+    for tweet in ntweets[:10]:
+        print(tweet['text'])
 
 
 if __name__ == "__main__":
