@@ -136,10 +136,10 @@ def main():
                         lats.append(poly[point][0])
                         longs.append(poly[point][1])
 
-                    for i in lats:
-                        outlat += i
-                    for j in longs:
-                        outlong += j
+                    for z in lats:
+                        outlat += z
+                    for y in longs:
+                        outlong += y
 
                     outlong = outlong / len(longs)
                     outlat = outlat / len(lats)
