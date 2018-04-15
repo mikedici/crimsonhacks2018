@@ -119,11 +119,36 @@ def main():
         credentials = json.load(f)
 
     # tweet_data = get_user_tweets(credentials, "sudointell")
+    # values = []
+
     values = []
     for i in interesting:
         tweet_data = get_hashtag_tweets(credentials, i)
         for j in tweet_data:
-            values.append((j.id_str,i, "", "", get_tweet_sentiment(j.full_text), j.full_text, j.created_at.strftime('%Y-%m-%d-%H-%M-%S')))
+            for tweet in tweet_data:
+                try:
+                    poly = tweet.place.bounding_box.coordinates[0]
+                    lats = []
+                    longs = []
+                    outlat = 0
+                    outlong = 0
+                    for point in range(len(poly)):
+                        lats.append(poly[point][0])
+                        longs.append(poly[point][1])
+
+                    for i in lats:
+                        outlat += i
+                    for j in longs:
+                        outlong += j
+
+                    outlong = outlong / len(longs)
+                    outlat = outlat / len(lats)
+
+
+                except AttributeError:
+                    outlat = ""
+                    outlong = ""
+            values.append((j.id_str,i, outlat, outlong, get_tweet_sentiment(j.full_text), j.full_text, j.created_at.strftime('%Y-%m-%d-%H-%M-%S')))
 
     myconnections.query("INSERT ignore INTO tweet (tweet_id, hashtag, lat, longitude, sentiment, raw_text, tweet_date) values" + str(
         create_insert(values)))
