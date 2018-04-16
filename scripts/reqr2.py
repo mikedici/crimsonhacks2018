@@ -14,12 +14,12 @@ elif args.choice == "l":
 elif args.choice == "z":
     mychoice = "Zcash"
 elif args.choice == "e":
-    mychoice = "Etherium"
+    mychoice = "Ethereum"
 else:
     print("b  bitcoin")
     print("l  litecoin")
     print("z  zcash")
-    print("e  etherium")
+    print("e  ethereum")
 
 
 req = requests.get("http://www.whatthehackshouldidowithmycrypto.com:8080")

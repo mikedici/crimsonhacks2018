@@ -61,7 +61,7 @@ def main():
     data = myconnections.query("SELECT hashtag, sentiment FROM tweet")
     myconnections.close()
 
-    crypto = {"Bitcoin": 0, "Etherium": 0, "Litecoin": 0, "Zcash": 0}
+    crypto = {"Bitcoin": 0, "Ethereum": 0, "Litecoin": 0, "Zcash": 0}
 
     for i in data:
         print(i)
@@ -69,12 +69,12 @@ def main():
 
             if i[1] == "positive" or i[1] == "neutral":
                 crypto["Bitcoin"] += 0.25
-                crypto["Etherium"] += 0.25
+                crypto["Ethereum"] += 0.25
                 crypto["Litecoin"] += 0.25
                 crypto["Zcash"] += 0.25
             elif i[1] == "negative":
                 crypto["Bitcoin"] -= 0.25
-                crypto["Etherium"] -= 0.25
+                crypto["Ethereum"] -= 0.25
                 crypto["Litecoin"] -= 0.25
                 crypto["Zcash"] -= 0.25
             else:
@@ -96,11 +96,11 @@ def main():
             else:
                 pass
 
-        elif i[0] == "#etherium":
+        elif i[0] == "#ethereum":
             if i[1] == "positive" or i[1] == "neutral":
-                crypto["Etherium"] += 1
+                crypto["Ethereum"] += 1
             elif i[1] == "negative":
-                crypto["Etherium"] -= 10
+                crypto["Ethereum"] -= 10
             else:
                 pass
 
