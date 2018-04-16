@@ -6,7 +6,7 @@ from time import sleep
 
 filterwarnings('ignore', category=Database.Warning)
 
-interesting = ["#hodl", "#btc", "#crypto", "#litecoin", "#etherium", "#bitcoin", "#zcash", "#zec"]
+interesting = ["#hodl", "#btc", "#crypto", "#litecoin", "#ethereum", "#bitcoin", "#zcash", "#zec"]
 
 
 class Daemon:
