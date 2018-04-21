@@ -10,17 +10,51 @@ html, body
     padding: 30px 10px;
 }
 
+.footer {
+    background-color:#4A6981;
+    padding: 10px 10px;
+}
+
 img {
     
-    padding-left: 30px;
-    padding-top: 10px;
+    padding-left: 40px;
+    padding-top: 0px;
+    padding-bottom: 30px;
+}
+
+h1 {
+    padding-top: 20px;
+    padding-bottom: 30px;
+   }
+
+p {
+    align: center;
+    color: #ffffff;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 30px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
 }
 .dropdown{
     
     position: absolute;
     padding-top: 60px;
     padding-left: 40px;
-    background-color: aquamarine;
+   
 
 
 }
@@ -46,6 +80,44 @@ img {
 
 
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 
 
 
