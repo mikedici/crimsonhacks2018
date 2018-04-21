@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="script.js"></script>
+  
 <title>Tweety Wallet </title>
 </head>
 <body>
@@ -23,45 +23,8 @@
     
 </div>
 
-   <!-- <div class="Context">
-     
-    < The Search box
-       <div class ="wrapper">
-           <div class="search-box">
-               <input type="text" class="input" placeholder="Search">
-               <div class="button">
-                    <i class="fab fa-searchengin" aria-hidden="false"></i>
 
-               </div>
-            </div>
-       </div>
-
-    <div class="cols">
-            <div class="dropdown">
-                    <button   class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Pictures
-                    <span class="caret"></span></button>
-                    
-                    <ul class="dropdown-menu">
-                      <li><button onclick="myfunction('Bitcoin')" >Bitcoin</button></li>
-                      <li><button onclick="myfunction('Zcash')"  >Zcash</button></li>
-                      <li><button  onclick="myfunction('Litecoin')">  Litecoin</button></li>
-                      <li><button onclick="myfunction('Etherium')">Etherium</button></li>
-                      
-
-                    </ul>
-                
-                  </div>
-
-
-            <img id="myImage"  src="back.svg" height="" max-width="" class="edit">
-
-
-
-                </div>
-
-     </div>
-     -->
-	 <div style="padding:25px;" align="center">
+<div style="padding:25px;" align="center">
 	 	 <figure>
      <iframe width="720" height="490" src="https://www.youtube.com/embed/HfotdSNnY0E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 	
@@ -71,12 +34,23 @@
 
 	 <div class="row">
   		<div class="column">
-   		 <h2 align="center">Zcash Word Cloud</h2>
-   		 <img align="center" id="wordcloud" src="zcash.png" alt="Zcash Word Cloud" height="425" width="650"> 
+   		 <!--<h2 align="center">Zcash Word Cloud</h2> -->
+       <div align="center">
+      
+        <select id="dropdown" onchange="document.getElementById('myImage').src = this.value">
+           <option value="new-ethereum.png">Ethereum</option>
+           <option value="new-zcash.png">Zcash</option>
+           <option value="new-bitcoin.png">Bitcoin</option>
+           <option value="new-litecoin.png">Litecoin</option>
+        </select> 
+   
+     <img align="center" id="myImage" src="new-ethereum.png" alt="Ethereum Wordcloud" height="425" width="650">
+
   	</div>
+  </div>
   		<div class="column">
-   		 <h2 align="center">Frequency</h2>
-   		 <img align="center" id ="barchart" src ="barchart.png" alt="Frequency Barchart Graph" height="425" width="650">
+   		 <h2 id="charttitle" align="center">Frequency</h2>
+   		 <img align="center" id ="barchart" src ="barchart.png" alt="Frequency Barchart Graph" height="460" width="650">
   	</div>	 
   	</div>	
   
@@ -94,5 +68,5 @@
 </footer>
 
 
- </body>
+</body>
 </html>
