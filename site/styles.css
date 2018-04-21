@@ -7,7 +7,7 @@ html, body
 
 .header {
     background-color:#4A6981;
-    padding: 30px 10px;
+    padding: 20px;
 }
 
 .footer {
@@ -15,20 +15,18 @@ html, body
     padding: 10px 10px;
 }
 
-img {
-    
-    padding-left: 40px;
-    padding-top: 0px;
-    padding-bottom: 30px;
+#logo {
+    padding-left: 1em;  
+    margin-bottom: .5em;
+    max-height: 100px;
 }
 
 #charttitle{
     margin-top: 0;
 }
 
-h1 {
-    padding-top: 20px;
-    padding-bottom: 30px;
+#tagline{
+    vertical-align: center;
    }
 
 p {

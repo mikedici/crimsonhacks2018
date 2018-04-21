@@ -2,71 +2,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="styles.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
-<title>Tweety Wallet </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 
+  <title>Tweety Wallet </title>
 </head>
+
 <body>
-
-<img src="logo.png" height="130" align="left">
-<h1 align="center">"What the hack should I do with my crypto?"</h1>
-
-
-
-
-<div class="header">
-    
+  <div>
+    <div style="float:left;margin-right:3em;margin-top:1em">
+      <img src="logo.png" id="logo">
+    </div>
+  <div style="float:left;margin-left: 11em;padding-top:1.25em">
+    <h1>"What the hack should I do with my crypto?"</h1>
+  </div>
+  <div class="header" style="clear:both">
+  </div>
 </div>
 
-
 <div style="padding:25px;" align="center">
-	 	 <figure>
-     <iframe width="720" height="490" src="https://www.youtube.com/embed/HfotdSNnY0E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-	
-	      <figcaption><a href="https://devpost.com/software/tweety-wallet">Tweety Wallet Devpost</a></figcaption>
-</figure> 
-	</div>
+	<figure>
+    <iframe width="720" height="490" src="https://www.youtube.com/embed/HfotdSNnY0E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<figcaption><a href="https://devpost.com/software/tweety-wallet">Tweety Wallet Devpost</a></figcaption>
+  </figure> 
+</div>
 
-	 <div class="row">
-  		<div class="column">
-   		 <!--<h2 align="center">Zcash Word Cloud</h2> -->
-       <div align="center">
-      
+<div class="row">
+  <div class="column">
+   		<div align="center">
         <select id="dropdown" onchange="document.getElementById('myImage').src = this.value">
            <option value="new-ethereum.png">Ethereum</option>
            <option value="new-zcash.png">Zcash</option>
            <option value="new-bitcoin.png">Bitcoin</option>
            <option value="new-litecoin.png">Litecoin</option>
         </select> 
-   
-     <img align="center" id="myImage" src="new-ethereum.png" alt="Ethereum Wordcloud" height="425" width="650">
-
-  	</div>
-  </div>
-  		<div class="column">
-   		 <h2 id="charttitle" align="center">Frequency</h2>
-   		 <img align="center" id ="barchart" src ="barchart.png" alt="Frequency Barchart Graph" height="460" width="650">
-  	</div>	 
-  	</div>	
-  
-   <div style align="center">
-		<h2 align="center">Crypto Sentiment</h2>
-   		 <img align="center" id ="sentiment" src ="crypto-sentiment.png" alt="Crypto Sentiment Graph" height="525" width="750">
+        <img align="center" id="myImage" src="new-ethereum.png" alt="Ethereum Wordcloud" height="425" width="650">
+      </div>
     </div>
+  <div class="column">
+     <h2 id="charttitle" align="center">Frequency</h2>
+   		 <img align="center" id ="barchart" src ="barchart.png" alt="Frequency Barchart Graph" height="460" width="650">
+  </div>	 
+</div>	
+  
+<div style align="center">
+	<h2 align="center">Crypto Sentiment</h2>
+   	<img align="center" id ="sentiment" src ="crypto-sentiment.png" alt="Crypto Sentiment Graph" height="525" width="750">
+</div>
 
 <footer>
-
-
-<div class="header">
+  <div class="header">
     <p style="color="#ffffff" align="center">&copy; Copyright 2018 Karen Watts, Michael DiCicco, Muntaser Syed</p>
-</div>
+  </div>
 </footer>
-
 
 </body>
 </html>
