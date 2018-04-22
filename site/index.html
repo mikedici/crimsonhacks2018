@@ -6,7 +6,40 @@
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
+  <meta charset="utf8">
+    <script type="text/javascript" language="javascript" src="frequency.json"></script>
+    <script type="text/javascript" language="javascript" src="scores.json"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawFreqChart);
+      google.charts.setOnLoadCallback(drawSentiChart);
+      function drawFreqChart() {
+        var data = google.visualization.arrayToDataTable(freqs);
+
+
+        // Set chart options
+        var options = {'title':'Relative Frequencies',
+                        'legend': {position: 'none'},
+                        'colors': ['#4A6981']
+                      };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('frequency_div'));
+        chart.draw(data, options);
+      }
+
+      function drawSentiChart() {
+        var data = google.visualization.arrayToDataTable(scores);
+        var options = {
+                        'title': 'Normalized Sentiment Scores',
+                        'legend': {position: 'none'},
+                        'colors': ['#4A6981']
+                      };
+        var chart = new google.visualization.BarChart(document.getElementById('sentiment_div'));
+        chart.draw(data, options);
+      }
+    </script>
   <title>Tweety Wallet </title>
 </head>
 
@@ -42,14 +75,12 @@
       </div>
     </div>
   <div class="column">
-     <h2 id="charttitle" align="center">Frequency</h2>
-   		 <img align="center" id ="barchart" src ="barchart.png" alt="Frequency Barchart Graph" height="460" width="650">
+     <div id="frequency_div" style="width: 900px; height: 500px;"></div>
   </div>	 
 </div>	
   
 <div style align="center">
-	<h2 align="center">Crypto Sentiment</h2>
-   	<img align="center" id ="sentiment" src ="crypto-sentiment.png" alt="Crypto Sentiment Graph" height="525" width="750">
+	<div id="sentiment_div" style="width: 900px; height: 500px;"></div>
 </div>
 
 <footer>
